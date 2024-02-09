@@ -11,4 +11,12 @@ describe("util file tests", () => {
     });
     expect(custom_type.type).toBe("custom/mimetype");
   });
+
+  test("content type is text/css;charset=utf-8", () => {
+    const path = tmpdir() + "/bun.test.file-type.css";
+    await Bun.write(path, "a{all:unset;}");
+
+    const file = Bun.file(path);
+    expect(file.type).toBe("text/css;charset=utf-8");
+  });
 });
