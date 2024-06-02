@@ -106,7 +106,7 @@ static void copyToUWS(WebCore::FetchHeaders* headers, UWSResponse* res)
     auto& internalHeaders = headers->internalHeaders();
 
     for (auto& value : internalHeaders.getSetCookieHeaders()) {
-        res->writeHeader(std::string_view("set-cookie", 10), std::string_view(value.is8Bit() ? reinterpret_cast<const char*>(value.characters8()) : value.utf8().data(), value.length()));
+        res->writeHeader(std::string_view("Set-Cookie", 10), std::string_view(value.is8Bit() ? reinterpret_cast<const char*>(value.characters8()) : value.utf8().data(), value.length()));
     }
 
     for (const auto& header : internalHeaders.commonHeaders()) {
